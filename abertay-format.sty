@@ -1,3 +1,4 @@
+\NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{abertay-format}
 
 \usepackage[margin=1in]{geometry}
@@ -9,13 +10,18 @@
 
 \usepackage[style=authoryear-ibid,backend=biber]{biblatex}
 
-\usepackage[english]{babel}
+\usepackage[UKenglish]{babel}
+\usepackage[useregional]{datetime2}
+\DTMlangsetup[en-GB]{ord=raise,monthyearsep={,\space}}
+
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{csquotes}% Recommended
 %\usepackage[hidelinks]{hyperref}
 \usepackage{hyperref}
 \usepackage{lstlinebgrd}
+
+
 
 \hypersetup{
 	pdfborder = {0 0 0},
@@ -42,6 +48,67 @@
 \usepackage{import}
 
 
+% Title page creation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\subtitle#1{\gdef\@subtitle{#1}}
+\def\@subtitle{\@latex@warning@no@line{No \noexpand\subtitle given}}
+
+\def\authorid#1{\gdef\@authorid{#1}}
+\def\@authorid{\@latex@warning@no@line{No \noexpand\authorid given}}
+
+\def\qualification#1{\gdef\@qualification{#1}}
+\def\@qualification{\@latex@warning@no@line{No \noexpand\qualification given}}
+
+\def\supervisor#1{\gdef\@supervisor{#1}}
+\def\@supervisor{\@latex@warning@no@line{No \noexpand\supervisor given}}
+
+\def\school#1{\gdef\@school{#1}}
+\def\@school{\@latex@warning@no@line{No \noexpand\school given}}
+
+\def\institute#1{\gdef\@institute{#1}}
+\def\@institute{\@latex@warning@no@line{No \noexpand\institute given}}
+
+
+\newcommand\addtitlepage{%
+\begin{titlepage}
+	
+	\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+	
+	\center % Center everything on the page
+	
+	\vspace*{0.1\textheight}
+	% TITLE SECTION--------------------------------------------------------------------------
+	\HRule \\[0.7cm]
+	{ \LARGE \bfseries \@title}\\ [0.3cm] % Title of your document
+	\HRule \\[1.0cm]
+	
+	
+	% AUTHOR SECTION-------------------------------------------------------------------------
+	\large \@author \hspace*{0.5cm} ID: \@authorid
+	\vspace{0.3cm}
+	
+	\normalsize \@qualification, \the\year
+	\vspace{0.5cm}
+	
+	% DATE SECTION---------------------------------------------------------------------------
+%	{\large \@date}\\ [1.5cm] % Date, change the \today to a set date if you want to be precise
+
+	
+	% LOGO SECTION  -------------------------------------------------------------------------
+%	\includegraphics[width=7cm]{logo.jpg}\\ [1.5cm]
+	
+	\vfill % Fill the rest of the page with whitespace
+	
+	%TODO: hide if \@supervisor is empty
+	\ifx\@supervisor\empty
+	\else
+		{\large Supervisor: \@supervisor\\[1.0cm]}
+	\fi
+	\textsc{\normalsize \@school}\\[0.2cm]
+	\textsc{\normalsize \@institute}
+	
+\end{titlepage}	
+}
 
 
 % Bibliography Management %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -99,6 +166,8 @@
 	{}%
 	\multicitedelim}
 {\usebibmacro{textcite:postnote}}
+
+
 
 
 

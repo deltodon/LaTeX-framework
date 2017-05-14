@@ -11,19 +11,92 @@
 \addbibresource{sample.bib}	% Syntax for version >= 1.2
 
 
-\title{A simple dissertation example showing how to create Harvard style referencing in LaTeX}
-
+\title{Simple dissertation example showing how to create Harvard style referencing in LaTeX}
+\subtitle{BSc (Hons) Computer Games Technology}
 \author{Student Name}
-\date{\today}
+\authorid{1234567}
+\qualification{BSc (Hons) Computer Games Technology}
 
+\supervisor{Supervisor Name}
+
+\school{School of Arts, Media and Computer Games}
+\institute{University of Abertay Dundee}
+
+%\date{\today}
+%\date{4th July 2017}
 
 
 
 % Start of the document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\maketitle
+
+%\makeatletter % changes the catcode of @ to 11
+%\begin{titlepage}
+%	
+%	\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+%	
+%	\center % Center everything on the page
+%	
+%	
+%	% HEADING SECTIONS-----------------------------------------------------------------------
+%	\textsc{\LARGE University of Abertay Dundee}\\[1.5cm]
+%	\textsc{\Large AG0904A: Graphics Programming with Shaders}\\[0.5cm]
+%	\textsc{\large Semester 1}\\[0.5cm] % Minor heading such as course title
+%	
+%	
+%	% TITLE SECTION--------------------------------------------------------------------------
+%	\HRule \\[0.7cm]
+%	{ \huge \bfseries \@title}\\ [0.3cm] % Title of your document
+%	\HRule \\[1.5cm]
+%	
+%	
+%	% AUTHOR SECTION-------------------------------------------------------------------------
+%	\begin{minipage}{0.4\textwidth}
+%		\begin{flushleft} 
+%			\large\emph{Author:}\\
+%			\LARGE \@author
+%		\end{flushleft}
+%	\end{minipage}
+%	~
+%	\begin{minipage}{0.4\textwidth}
+%		\begin{flushright}
+%			\large\emph{Supervisor:} \\
+%			\LARGE Supervisor Name
+%		\end{flushright}
+%	\end{minipage}\\[2cm]
+%	
+%	% If you don't want a supervisor, uncomment the two lines below and remove the section above
+%	%\Large \emph{Author:}\\
+%	%John \textsc{Smith}\\[3cm] % Your name
+%	
+%	
+%	% DATE SECTION---------------------------------------------------------------------------
+%	{\large \@date}\\ [1.5cm] % Date, change the \today to a set date if you want to be precise
+%
+%	
+%	% LOGO SECTION  -------------------------------------------------------------------------
+%%	\includegraphics[width=7cm]{logo.jpg}\\ [1.5cm]
+%	
+%	%\vfill % Fill the rest of the page with whitespace
+%%	\begin{center}
+%%		\begin{tabular}{ |c|c|c|c|} \hline 
+%%			Version & Date & Author & Change details \\ \hline\hline
+%%			1.0 & 11/12/2015 & Jiri Klic & Final Review of Release Version \\
+%%			0.9 & 11/12/2015 & Jiri Klic & Conclusion and References \\
+%%			0.7 & 10/12/2015 & Jiri Klic & Techniques Used  \\
+%%			0.5 & 10/12/2015 & Jiri Klic & Application Design \\
+%%			0.3 & 09/12/2015 & Jiri Klic & Introduction and Objectives \\
+%%			0.1 & 08/12/2015 & Jiri Klic & Created skeletal frame of the report \\ \hline
+%%		\end{tabular}
+%%	\end{center}
+%	
+%\end{titlepage}
+%\makeatother % changes the catcode of @ back to 12
+\addtitlepage
 \pagebreak
+
+\pagenumbering{roman}
 
 \tableofcontents
 \pagebreak
@@ -44,7 +117,7 @@
 \listoftables
 \pagebreak
 
-
+\pagenumbering{arabic}
 
 
 
@@ -110,9 +183,11 @@ The following examples show how to produce Harvard style referencing using bibla
 \pagebreak
 
 
-
-
-
+%\cleardoublepage
+\phantomsection % Uncomment if you're using hyperref
+%\addtocounter{section}{1}
+%\addcontentsline{toc}{section}{\protect\numberline{\thesection} References}
+\addcontentsline{toc}{section}{References}
 \printbibliography
 \pagebreak
 

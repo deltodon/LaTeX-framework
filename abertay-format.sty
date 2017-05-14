@@ -1,0 +1,203 @@
+\ProvidesPackage{abertay-format}
+
+\usepackage[margin=1in]{geometry}
+
+\usepackage{helvet} % use Helvetica font type
+
+% switch to using sans-serif for everything except mathematics
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[style=authoryear-ibid,backend=biber]{biblatex}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{csquotes}% Recommended
+%\usepackage[hidelinks]{hyperref}
+\usepackage{hyperref}
+\usepackage{lstlinebgrd}
+
+\hypersetup{
+	pdfborder = {0 0 0},
+%	bookmarks=true,         % show bookmarks bar?
+%	unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+%	pdftoolbar=true,        % show Acrobat’s toolbar?
+%	pdfmenubar=true,        % show Acrobat’s menu?
+%	pdffitwindow=false,     % window fit to page when opened
+%	pdfstartview={FitH},    % fits the width of the page to the window
+%	pdftitle={My title},    % title
+%	pdfauthor={Author},     % author
+%	pdfsubject={Subject},   % subject of the document
+%	pdfcreator={Creator},   % creator of the document
+%	pdfproducer={Producer}, % producer of the document
+%	pdfkeywords={keyword1, key2, key3}, % list of keywords
+%	pdfnewwindow=true,      % links in new PDF window
+	colorlinks=true,       % false: boxed links; true: colored links
+	linkcolor=black,          % color of internal links (change box color with linkbordercolor)
+	citecolor=blue,        % color of links to bibliography
+	filecolor=magenta,      % color of file links
+	urlcolor=cyan           % color of external links
+}
+
+\usepackage{import}
+
+
+
+
+% Bibliography Management %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage[style=authoryear-ibid,backend=biber]{biblatex}
+
+\DeclareCiteCommand{\cite}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+	\printtext[bibhyperref]{\usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand*{\cite}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+	\printtext[bibhyperref]{\usebibmacro{citeyear}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\parencite}[\mkbibparens]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+	\printtext[bibhyperref]{\usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand*{\parencite}[\mkbibparens]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+	\printtext[bibhyperref]{\usebibmacro{citeyear}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\footcite}[\mkbibfootnote]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+	\printtext[bibhyperref]{ \usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\footcitetext}[\mkbibfootnotetext]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+	\printtext[bibhyperref]{\usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\textcite}
+{\boolfalse{cbx:parens}}
+{\usebibmacro{citeindex}%
+	\printtext[bibhyperref]{\usebibmacro{textcite}}}
+{\ifbool{cbx:parens}
+	{\bibcloseparen\global\boolfalse{cbx:parens}}
+	{}%
+	\multicitedelim}
+{\usebibmacro{textcite:postnote}}
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\usepackage{color}
+%\usepackage{graphicx}
+%\usepackage{hyperref}
+%\usepackage{listings}
+%\usepackage{lstlinebgrd}
+%\usepackage{float}
+%
+%\usepackage{tikz}
+%\usetikzlibrary{shadows, shadows.blur}
+%\usetikzlibrary{shapes,snakes}
+%\usepackage{amsmath,amssymb}
+%\usepackage{verbatim}
+%\usetikzlibrary{shapes.symbols}
+%\usepackage{sectsty}
+%
+%
+%
+%
+%\sectionfont{\centering}
+%
+%\hypersetup{pdfborder = {0 0 0}}
+%\definecolor{myred}{rgb}{0.6,0,0} % for strings
+%\definecolor{mygreen}{rgb}{0,0.5,0} % comments
+%\definecolor{mypurple}{rgb}{0.5,0,0.35} % 
+%\definecolor{myblue}{rgb}{0,0,0.7} % keywords
+%\definecolor{lightgrey}{rgb}{1,1,1}
+%\definecolor{lightyellow}{rgb}{1,1,0.8} % lines bgr
+%\definecolor{lightgreen}{rgb}{0.9,1,0.9} % lines bgr
+%\definecolor{darkgreen}{rgb}{0,0.6,0}
+%\definecolor{darkgray}{rgb}{0.7,0.7,0.7} % keywords
+%\usepackage{courier}
+%\usepackage[T1]{fontenc}
+%
+%%frameshape={RYRNNNRYR}{yny}{yny}{RYRNNNRYR},
+%%frameround=tttt,
+%%rulesepcolor=\color{green},
+%%rulesep=5pt,
+%%columns=r,
+%%backgroundcolor=\color{lightgrey},
+%
+%\lstset{framexleftmargin=1pt,				
+%	frame=l,
+%	%frameshape={RYRNNNRYR}{yny}{yny}{RYRNNNRYR},
+%	%frameround=tttt,
+%	%framesep=1pt,
+%	rulecolor=\color{green},
+%	%fillcolor=\color{darkgray},
+%	framerule=3pt,
+%	numbers=left,
+%	numbersep=12pt,
+%	tabsize=5,
+%	breaklines=true,
+%	%linewidth=1.4\textwidth,
+%	linebackgroundcolor={\ifodd\value{lstnumber}\color{lightgreen}\else\color{lightgray}\fi},
+%	xleftmargin=7ex,
+%	%xrightmargin=35pt,
+%	numberstyle=\footnotesize,
+%	basicstyle=\ttfamily,
+%	keywordstyle=\color{blue}\ttfamily,
+%	stringstyle=\color{myred}\ttfamily,
+%	commentstyle=\color{mygreen}\ttfamily,
+%	morecomment=[l][\color{magenta}]{\#}
+%}
+%
+%
+%% Define box and box title style
+%\tikzstyle{mybox1} = [draw=blue, top color=blue!5, bottom color=blue!20, 
+%rectangle, rounded corners, inner sep=10pt, inner ysep=15pt, blur shadow={shadow blur steps= 5}]
+%\tikzstyle{fancytitle1} =[fill=blue, text=white, rounded corners]

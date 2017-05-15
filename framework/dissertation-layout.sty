@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{abertay-format}
+\ProvidesPackage{dissertation-layout}
 
 \usepackage[margin=1in]{geometry}
 
@@ -53,8 +53,8 @@
 \def\subtitle#1{\gdef\@subtitle{#1}}
 \def\@subtitle{\@latex@warning@no@line{No \noexpand\subtitle given}}
 
-\def\authorid#1{\gdef\@authorid{#1}}
-\def\@authorid{\@latex@warning@no@line{No \noexpand\authorid given}}
+\def\studentid#1{\gdef\@studentid{#1}}
+\def\@studentid{\@latex@warning@no@line{No \noexpand\studentid given}}
 
 \def\qualification#1{\gdef\@qualification{#1}}
 \def\@qualification{\@latex@warning@no@line{No \noexpand\qualification given}}
@@ -84,7 +84,7 @@
 	
 	
 	% AUTHOR SECTION-------------------------------------------------------------------------
-	\large \@author \hspace*{0.5cm} ID: \@authorid
+	\large \@author \hspace*{0.5cm} ID: \@studentid
 	\vspace{0.3cm}
 	
 	\normalsize \@qualification, \the\year
@@ -100,7 +100,7 @@
 	\vfill % Fill the rest of the page with whitespace
 	
 	%TODO: hide if \@supervisor is empty
-	\ifx\@supervisor\empty
+	\ifx \@supervisor \empty
 	\else
 		{\large Supervisor: \@supervisor\\[1.0cm]}
 	\fi

@@ -1,0 +1,130 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Dissertation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage{../framework/dissertation-layout}
+
+% Insert your .bib file in here
+\addbibresource{sample.bib}	% Syntax for version >= 1.2
+
+%\title{Simple dissertation example showing how to create Harvard style referencing in \LaTeX}
+\title{The Name of Your Project}
+
+\author{Your Name}
+\studentid{1234567}
+
+%\qualification{BSc (Hons) Computer Games Technology}
+\qualification{Name of Qualification Sought}
+
+\supervisor{Supervisor Name}
+
+%\school{School of Arts, Media and Computer Games}
+\school{Name of School}
+
+%\institute{University of Abertay Dundee}
+\institute{Name of Your University}
+
+
+% Start of the document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+	
+\addtitlepage
+\pagebreak
+
+\pagenumbering{roman}
+
+\tableofcontents
+\pagebreak
+
+\phantomsection % Uncomment if you're using hyperref
+%\addtocounter{section}{1}
+%\addcontentsline{toc}{section}{\protect\numberline{\thesection} \listfigurename}
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+\pagebreak
+
+\phantomsection % Uncomment if you're using hyperref
+%\addtocounter{section}{1}
+%\addcontentsline{toc}{section}{\protect\numberline{\thesection} \listtablename}
+\addcontentsline{toc}{section}{\listtablename}
+\listoftables
+\pagebreak
+
+\pagenumbering{arabic}
+
+
+\section{Acknowledgements}
+% Write your Acknowledgements here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\pagebreak
+
+
+\section{Abstract}
+% Write your Abstract here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\pagebreak
+
+
+\section{Abbreviations, Symbols and Notation}
+% If required %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\pagebreak
+
+
+% Start typing your Project here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Citation examples}
+\subsection{Sub1}
+
+
+
+The following examples show how to produce Harvard style referencing using biblatex.
+
+\begin{enumerate}
+\item A citation command in parentheses: \parencite{Smith:2012qr}.
+\item A citation command for use in the flow of text: As \textcite{Smith:2013jd} said \dots
+\item A citation command which automatically switches style depending on location and the option setting in the package declaration (see line 12 in the LaTeX source code). In this case, it produces a citation in parentheses: \autocite{Other:2014ab}.
+\end{enumerate}
+
+
+\subsection{Sub1}
+
+
+\subsection{Sub2}
+
+
+\subsection{Sub3}
+
+
+
+\pagebreak
+
+
+\section{Appendices}
+% Write your Appendices here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\pagebreak
+
+
+%\cleardoublepage
+\phantomsection % Uncomment if you're using hyperref
+%\addtocounter{section}{1}
+%\addcontentsline{toc}{section}{\protect\numberline{\thesection} References}
+\addcontentsline{toc}{section}{References}
+\printbibliography
+\pagebreak
+
+
+%\makeindex
+%\printindex
+
+
+
+
+\end{document}

@@ -16,12 +16,12 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
-\usepackage{csquotes}% Recommended
+\usepackage{csquotes}		% Recommended
 %\usepackage[hidelinks]{hyperref}
 \usepackage{hyperref}
 \usepackage{lstlinebgrd}
 
-
+\usepackage{graphicx}		% for \includegraphics
 
 \hypersetup{
 	pdfborder = {0 0 0},
@@ -71,6 +71,9 @@
 \def\institute#1{\gdef\@institute{#1}}
 \def\@institute{\@latex@warning@no@line{No \noexpand\institute given}}
 
+\def\addlogo#1{\gdef\@addlogo{#1}}
+\def\@addlogo{\@latex@warning@no@line{No \noexpand\addlogo given}}
+\addlogo{} % initialize as empty
 
 \newcommand\addtitlepage{%
 \begin{titlepage}
@@ -96,16 +99,18 @@
 	\vspace{0.3cm}
 	
 	\normalsize \@qualification, \the\year
-	\vspace{0.5cm}
+	\vspace{5cm}
 	
-	% DATE SECTION---------------------------------------------------------------------------
-%	{\large \@date}\\ [1.5cm] % Date, change the \today to a set date if you want to be precise
-
 	
-	% LOGO SECTION  -------------------------------------------------------------------------
-%	\includegraphics[width=7cm]{logo.jpg}\\ [1.5cm]
+	% LOGO SECTION  ------------------------------------------------------------
+	\ifx\@addlogo\@empty
+	\relax
+	\else
+	\includegraphics[width=3cm]{\@addlogo}
+	\fi%
 	
-	\vfill % Fill the rest of the page with whitespace
+	
+	\vfill % Fill the rest of the page with whitespace	
 	
 	\ifx\@supervisor\@empty
 	\relax

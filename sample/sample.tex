@@ -9,28 +9,36 @@
 % Insert your .bib file in here
 \addbibresource{sample.bib}	% Syntax for version >= 1.2
 
+
+% Mandatory arguments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %\title{Simple dissertation example showing how to create Harvard style referencing in \LaTeX}
 \title{The Name of Your Project}
 
 \author{Your Name}
 
+% i.e. - BSc (Hons) Computer Games Technology
+\qualification{Name of Qualification Sought}
+
+% i.e. - School of Arts, Media and Computer Games
+\school{Name of School}
+
+% i.e. - University of Abertay Dundee
+\institute{Name of Your University}
+
+% Optional arguments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % If you want to display your student ID,
 % uncomment the line bellow and update the number
 \studentid{1234567}
-
-%\qualification{BSc (Hons) Computer Games Technology}
-\qualification{Name of Qualification Sought}
 
 % If you want to display your supervisor name,
 % uncomment the line bellow and update the name
 \supervisor{Supervisor Name}
 
-
-%\school{School of Arts, Media and Computer Games}
-\school{Name of School}
-
-%\institute{University of Abertay Dundee}
-\institute{Name of Your University}
+% If you want to display your University logo,
+% uncomment the line bellow and update the path
+\addlogo{../framework/logos/Abertay.png}
 
 
 % Start of the document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -62,39 +70,38 @@
 \pagenumbering{arabic}
 
 
-\section{Acknowledgements}
-% Write your Acknowledgements here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Acknowledgements} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \pagebreak
 
 
-\section{Abstract}
-% Write your Abstract here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\section{Abstract} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The abstract is a kind of executive summary. Abstracts are often published separately and so must function entirely on their own. They are not short introductions but rather they summarise the whole dissertation in terms of the aims of the work, what methods were used, what was actually done, what findings are reported and what conclusions have been reached; this is done in around 300 words. The abstract should contain no references and is often the last part to be written.
 
 \pagebreak
 
 
-\section{Abbreviations, Symbols and Notation}
-% If required %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Abbreviations, Symbols and Notation} % If required %%%%%%%%%%%%%%%%%%%%
 
 
 \pagebreak
 
 
 % Start typing your Project here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Citation examples}
-\subsection{Sub1}
+\section{Introduction}
+The introduction should set the scene for the dissertation and allow the reader to align themselves to the topic. It should start very general and then focus towards the specific topic of the project. This is probably the only part of the dissertation where you can be slightly informal and you might quote some interesting text to get the attention of the reader. The introduction should make the reader want to continue reading. You will doubtless repeat some of this material in more detail later on, so don’t put too many references in the introduction in order to keep it fairly light. A couple of photos, screen shots or diagrams won’t go amiss at this point to get the reader’s interest and help explain the topic. A typical introduction will be no more than 5 pages and you should finish this section with a clear statement of your project focus as a research question or problem
 
+
+\subsection{Sub1}
 
 
 The following examples show how to produce Harvard style referencing using biblatex.
 
 \begin{enumerate}
-\item A citation command in parentheses: \parencite{Smith:2012qr}.
-\item A citation command for use in the flow of text: As \textcite{Smith:2013jd} said \dots
-\item A citation command which automatically switches style depending on location and the option setting in the package declaration (see line 12 in the LaTeX source code). In this case, it produces a citation in parentheses: \autocite{Other:2014ab}.
+	\item A citation command in parentheses: \parencite{Smith:2012qr}.
+	\item A citation command for use in the flow of text: As \textcite{Smith:2013jd} said \dots
+	\item A citation command which automatically switches style depending on location and the option setting in the package declaration (see line 12 in the LaTeX source code). In this case, it produces a citation in parentheses: \autocite{Other:2014ab}.
 \end{enumerate}
 
 
@@ -111,11 +118,68 @@ The following examples show how to produce Harvard style referencing using bibla
 \pagebreak
 
 
-\section{Appendices}
-% Write your Appendices here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Background/Context} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The purpose of this section is to explain the context and background of your project i.e. it summarises the current “state of play” when you began, explains how your project builds on this and justifies your choice of methods and evaluation. When writing this section you will be making a series of statements to explain the background of your project topic and your choice of what to do. Imagine that each time you make a statement or express an opinion your reader is thinking “I don’t believe that” or “I’m not sure that’s right” – and anticipate these questions by supporting your writing with a reference from an appropriate source. In this way your references are used to either save you time explaining everything or are being used to support your arguments. Don’t go overboard on this but certainly try to use your references as stepping stones to lead the reader to the same position that you got to.
+
+\pagebreak
+
+
+\section{Methodology} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Having explained the background to your project and justified your choice of project topic (perhaps in terms of commercial importance or clarification of a theory or development technique for example), it is now time to deal with the practical aspects of the project. In this section you should explain what practical work you have identified as needing to be done i.e. what evidence you will need to obtain in order to address your research question or problem. You should justify your choice of practical methods and the means of collecting and analysing the data. You should also deal with any ethical considerations here, especially if they have restricted you in any way. This section should also use references to avoid long explanations or to justify the choice of a particular method of data acquisition or analysis. If you are to use a questionnaire to help evaluate your work you should explain your questionnaire design and how the data will be collected and evaluated in this section.
+
+\pagebreak
+
+
+\section{Results} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In this section you will now present your practical work e.g. prototypes, level designs, screen shots, data, etc. Use appendices to avoid having lots of pages of charts or tables or code listings so as to not interrupt the flow of the dissertation. Present your results and the analysis you have carried out clearly and honestly. Mention areas where there are perhaps problems or issues but don’t dwell on these at this point. Be scientifically rigorous when analysing quantitative data - e.g. choosing appropriate statistical methods of analysis? Use charts, tables and diagrams etc. effectively, to help the reader understand what you have found and to lead them to the conclusions that you will be discussing next.
+
+\pagebreak
+
+
+\section{Discussion} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Hopefully at this point the reader has seen the results of your work and will appreciate how your project has added to the current understanding of the topic. However they will probably have a number of questions and will expect you to address them in this section. Discuss the findings of your work and be fair and honest about it. Don’t emphasise any failings or things that didn’t work as expected but don’t try to hide them. Try to discuss your work in a positive manner and specifically identify in what way your research question or problem has been answered. Don’t worry if the question has been answered in a way that you didn’t predict or anticipate – as long as your expectations were realistic and your methods correct then the work you are reporting is valuable and extends the understanding of the subject.
+
+\pagebreak
+
+
+\section{Conclusions and Future Work} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In this final part you now draw the dissertation to a close with a summary of the main findings and clarification of where there may still be questions or uncertainties or disagreement with previous work. You should finish on a positive note by considering how your work could be continued or extended and perhaps mention any recent developments that have relevance to the project (which is now almost 1 year old).
+
+\pagebreak
+
+
+\section{Risk Analysis} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \pagebreak
+
+
+
+%\section{Risk Analysis} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%\pagebreak
+%
+%
+%\section{Summary} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%\pagebreak
+
+
+
+
+
+
+
+\section{Appendices} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\pagebreak
+
+
+
+% References and Bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %\cleardoublepage

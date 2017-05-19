@@ -4,11 +4,30 @@
 
 \documentclass[a4paper, 12pt]{article}
 
-\usepackage{../framework/dissertation-layout}
+\makeatletter
+	\providecommand*{\input@path}{}
+	\g@addto@macro\input@path{{../framework/}}	% append
+\makeatother
+
+\usepackage{imakeidx}
+\makeindex[intoc, options={-s ../framework/dtn-indexstyle}]
+
+
+\usepackage{dissertation-layout}
+
+
+
+
+
+\DeclareBibliographyCategory{cited}
+\AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
+
 
 % Insert your .bib file in here
 \addbibresource{sample.bib}	% Syntax for version >= 1.2
 
+
+\nocite{*}
 
 % Mandatory arguments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -38,7 +57,7 @@
 
 % If you want to display your University logo,
 % uncomment the line bellow and update the path
-\addlogo{../framework/logos/Abertay.png}
+\addlogo{logos/Abertay.png}
 
 
 % Start of the document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -77,7 +96,7 @@
 
 
 \section{Abstract} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The abstract is a kind of executive summary. Abstracts are often published separately and so must function entirely on their own. They are not short introductions but rather they summarise the whole dissertation in terms of the aims of the work, what methods were used, what was actually done, what findings are reported and what conclusions have been reached; this is done in around 300 words. The abstract should contain no references and is often the last part to be written.
+The abstract\index{Abstract} is a kind of executive summary. Abstracts are often published separately and so must function entirely on their own. They are not short introductions but rather they summarise the whole dissertation in terms of the aims of the work, what methods were used, what was actually done, what findings are reported and what conclusions have been reached; this is done in around 300 words\index{Abstract!word count}. The abstract should contain no references and is often the last part to be written.
 
 \pagebreak
 
@@ -90,7 +109,7 @@ The abstract is a kind of executive summary. Abstracts are often published separ
 
 % Start typing your Project here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-The introduction should set the scene for the dissertation and allow the reader to align themselves to the topic. It should start very general and then focus towards the specific topic of the project. This is probably the only part of the dissertation where you can be slightly informal and you might quote some interesting text to get the attention of the reader. The introduction should make the reader want to continue reading. You will doubtless repeat some of this material in more detail later on, so don’t put too many references in the introduction in order to keep it fairly light. A couple of photos, screen shots or diagrams won’t go amiss at this point to get the reader’s interest and help explain the topic. A typical introduction will be no more than 5 pages and you should finish this section with a clear statement of your project focus as a research question or problem
+The introduction\index{Introduction} should set the scene for the dissertation and allow the reader to align themselves to the topic. It should start very general and then focus towards the specific topic of the project. This is probably the only part of the dissertation where you can be slightly informal and you might quote some interesting text to get the attention of the reader. The introduction should make the reader want to continue reading. You will doubtless repeat some of this material in more detail later on, so don’t put too many references in the introduction in order to keep it fairly light. A couple of photos, screen shots or diagrams won’t go amiss at this point to get the reader’s interest and help explain the topic. A typical introduction will be no more than 5 pages and you should finish this section with a clear statement of your project focus as a research question or problem
 
 
 \subsection{Sub1}
@@ -99,8 +118,8 @@ The introduction should set the scene for the dissertation and allow the reader 
 The following examples show how to produce Harvard style referencing using biblatex.
 
 \begin{enumerate}
-	\item A citation command in parentheses: \parencite{Smith:2012qr}.
-	\item A citation command for use in the flow of text: As \textcite{Smith:2013jd} said \dots
+	\item A citation\index{Citation} command in parentheses: \parencite{Smith:2012qr}.
+%	\item A citation command for use in the flow of text: As \textcite{Smith:2013jd} said \dots
 	\item A citation command which automatically switches style depending on location and the option setting in the package declaration (see line 12 in the LaTeX source code). In this case, it produces a citation in parentheses: \autocite{Other:2014ab}.
 \end{enumerate}
 
@@ -119,7 +138,7 @@ The following examples show how to produce Harvard style referencing using bibla
 
 
 \section{Background/Context} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The purpose of this section is to explain the context and background of your project i.e. it summarises the current “state of play” when you began, explains how your project builds on this and justifies your choice of methods and evaluation. When writing this section you will be making a series of statements to explain the background of your project topic and your choice of what to do. Imagine that each time you make a statement or express an opinion your reader is thinking “I don’t believe that” or “I’m not sure that’s right” – and anticipate these questions by supporting your writing with a reference from an appropriate source. In this way your references are used to either save you time explaining everything or are being used to support your arguments. Don’t go overboard on this but certainly try to use your references as stepping stones to lead the reader to the same position that you got to.
+The purpose of this section is to explain the context\index{Context} and background of your project i.e. it summarises the current “state of play” when you began, explains how your project builds on this and justifies your choice of methods and evaluation. When writing this section you will be making a series of statements to explain the background of your project topic and your choice of what to do. Imagine that each time you make a statement or express an opinion your reader is thinking “I don’t believe that” or “I’m not sure that’s right” – and anticipate these questions by supporting your writing with a reference from an appropriate source. In this way your references are used to either save you time explaining everything or are being used to support your arguments. Don’t go overboard on this but certainly try to use your references as stepping stones to lead the reader to the same position that you got to.
 
 \pagebreak
 
@@ -185,16 +204,30 @@ In this final part you now draw the dissertation to a close with a summary of th
 %\cleardoublepage
 \phantomsection % Uncomment if you're using hyperref
 %\addtocounter{section}{1}
-%\addcontentsline{toc}{section}{\protect\numberline{\thesection} References}
-\addcontentsline{toc}{section}{References}
-\printbibliography
+%\addcontentsline{toc}{section}{\protect\numberline{\thesection} List of References}
+\addcontentsline{toc}{section}{List of References}
+\printbibliography[title={List of References},category=cited]
 \pagebreak
 
 
-%\makeindex
-%\printindex
+
+% Print not cited bibliography if required as futher reading &&&&&&&&&&&&&&&&&&&
+\phantomsection % Uncomment if you're using hyperref
+%\addtocounter{section}{1}
+%\addcontentsline{toc}{section}{\protect\numberline{\thesection} Bibliography}
+\addcontentsline{toc}{section}{Bibliography}
+\printbibliography[title={Bibliography},notcategory=cited]
+\pagebreak
 
 
+% Index %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\indexprologue[\vspace{1cm}]{Any text for Index prologue comes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat a enim sed posuere. Proin ut diam dapibus, facilisis dui eget, molestie neque. Aenean at libero lectus. Curabitur sit amet nulla vitae arcu accumsan mattis vitae euismod velit. Aliquam tincidunt nec urna nec lacinia. }
+
+\printindex
+
+
+%Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat a enim sed posuere. Proin ut diam dapibus, facilisis dui eget, molestie neque. Aenean at libero lectus. Curabitur sit amet nulla vitae arcu accumsan mattis vitae euismod velit. Aliquam tincidunt nec urna nec lacinia. Donec eget diam ut justo placerat rutrum vel at diam. Sed ac gravida nisl, ac aliquam nunc. Cras rhoncus gravida porttitor. In at finibus tellus, quis egestas mauris. Suspendisse tincidunt, diam gravida venenatis interdum, ex nunc ultricies metus, in tincidunt orci dolor quis mi. Suspendisse tempus, velit vitae condimentum dignissim, est turpis finibus neque, vel facilisis elit arcu cursus felis. Vestibulum vitae pretium magna, eget interdum nisi.
 
 
 \end{document}

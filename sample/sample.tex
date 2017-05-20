@@ -4,30 +4,30 @@
 
 \documentclass[a4paper, 12pt]{article}
 
+
+% Macro declaration - do not touch %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \makeatletter
-	\providecommand*{\input@path}{}
-	\g@addto@macro\input@path{{../framework/}}	% append
+	\newcommand*{\addsourcedir}[1] {
+		\providecommand\commonDir{}
+		\renewcommand\commonDir{#1}		
+		\providecommand*{\input@path}{}
+		\g@addto@macro\input@path{\commonDir}	% append
+	}
 \makeatother
-
-\usepackage{imakeidx}
-\makeindex[intoc, options={-s ../framework/dtn-indexstyle}]
-
-
-\usepackage{dissertation-layout}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 
 
-\DeclareBibliographyCategory{cited}
-\AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
+% Add source path and layout preamble %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addsourcedir{../thesis/}	% change to diretory path with dtn-layout.sty
+\usepackage{dtn-layout}		% leave as it is
 
-
-% Insert your .bib file in here
+% Insert your .bib file in here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \addbibresource{sample.bib}	% Syntax for version >= 1.2
+\nocite{*} % Provide not cited entries for bibliography
 
-
-\nocite{*}
 
 % Mandatory arguments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -64,29 +64,7 @@
 
 \begin{document}
 	
-\addtitlepage
-\pagebreak
-
-\pagenumbering{roman}
-
-\tableofcontents
-\pagebreak
-
-\phantomsection % Uncomment if you're using hyperref
-%\addtocounter{section}{1}
-%\addcontentsline{toc}{section}{\protect\numberline{\thesection} \listfigurename}
-\addcontentsline{toc}{section}{\listfigurename}
-\listoffigures
-\pagebreak
-
-\phantomsection % Uncomment if you're using hyperref
-%\addtocounter{section}{1}
-%\addcontentsline{toc}{section}{\protect\numberline{\thesection} \listtablename}
-\addcontentsline{toc}{section}{\listtablename}
-\listoftables
-\pagebreak
-
-\pagenumbering{arabic}
+\addfrontmatter
 
 
 \section{Acknowledgements} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

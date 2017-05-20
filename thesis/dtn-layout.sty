@@ -1,14 +1,26 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{dissertation-layout}[2017/05/19 Dissertation Layout]
+\ProvidesPackage{dtn-layout}[2017/05/19 Dissertation Layout]
 
+%\RequirePackage{currfile}
+%\usepackage{todonotes}
+
+
+% requires \commonDir to be declared in main file %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\thispath#1{\gdef\@thispath{\commonDir#1}}
+\def\@thispath{\@latex@warning@no@line{No \thispath given}}
+
+
+% proeject preambles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage[margin=1in]{geometry}
-
 \usepackage{helvet} % use Helvetica font type
 
 % switch to using sans-serif for everything except mathematics
 \renewcommand{\familydefault}{\sfdefault}
 
 \usepackage[style=authoryear-ibid,backend=biber]{biblatex}
+
+\DeclareBibliographyCategory{cited}
+\AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
 
 \usepackage[UKenglish]{babel}
 \usepackage[useregional]{datetime2}
@@ -17,6 +29,15 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{csquotes}		% Recommended
+
+
+\thispath{dtn-indexstyle}
+\usepackage{imakeidx}
+%\makeindex[intoc, options=-s ../thesis/dtn-indexstyle]
+\makeindex[intoc, options=-s \@thispath]
+
+
+
 %\usepackage[hidelinks]{hyperref}
 \usepackage{hyperref}
 \usepackage{lstlinebgrd}
@@ -45,15 +66,13 @@
 %	pdfnewwindow=true,      % links in new PDF window
 	colorlinks=true,       % false: boxed links; true: colored links
 	linkcolor=black,          % color of internal links (change box color with linkbordercolor)
-	citecolor=blue,        % color of links to bibliography
+	citecolor=black,        % color of links to bibliography
 	filecolor=magenta,      % color of file links
 	urlcolor=cyan           % color of external links
 }
 
-\usepackage{import}
 
-
-% Title page creation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Front matter creation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \def\subtitle#1{\gdef\@subtitle{#1}}
 \def\@subtitle{\@latex@warning@no@line{No \noexpand\subtitle given}}
@@ -104,8 +123,8 @@
 	\vspace{0.3cm}
 	
 	\normalsize \@qualification, \the\year
-	\vspace{5cm}
-	
+%	\vspace{5cm}
+	\vspace*{\fill}
 	
 	% LOGO SECTION  ------------------------------------------------------------
 	\ifx\@addlogo\@empty
@@ -115,8 +134,10 @@
 	\fi%
 	
 	
-	\vfill % Fill the rest of the page with whitespace	
+	\vspace*{\fill}
+%	\vfill % Fill the rest of the page with whitespace	
 	
+
 	\ifx\@supervisor\@empty
 	\relax
 	\else
@@ -129,9 +150,35 @@
 }
 
 
+\newcommand\addfrontmatter{%
+	\addtitlepage
+	\pagebreak
+	
+	\pagenumbering{roman}
+	
+	\tableofcontents
+	\pagebreak
+	
+	\phantomsection % Uncomment if you're using hyperref
+	%\addtocounter{section}{1}
+	%\addcontentsline{toc}{section}{\protect\numberline{\thesection} \listfigurename}
+	\addcontentsline{toc}{section}{\listfigurename}
+	\listoffigures
+	\pagebreak
+	
+	\phantomsection % Uncomment if you're using hyperref
+	%\addtocounter{section}{1}
+	%\addcontentsline{toc}{section}{\protect\numberline{\thesection} \listtablename}
+	\addcontentsline{toc}{section}{\listtablename}
+	\listoftables
+	\pagebreak
+	
+	\pagenumbering{arabic}
+}
+
+
 % Bibliography Management %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\usepackage[style=authoryear-ibid,backend=biber]{biblatex}
 
 \DeclareCiteCommand{\cite}
 {\usebibmacro{prenote}}

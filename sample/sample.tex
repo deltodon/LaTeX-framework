@@ -26,7 +26,7 @@
 
 % Insert your .bib file in here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \addbibresource{sample.bib}	% Syntax for version >= 1.2
-\nocite{*} % Provide not cited entries for bibliography
+\nocite{*} % Provides not cited entries for bibliography
 
 
 % Mandatory arguments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -56,8 +56,13 @@
 \supervisor{Supervisor Name}
 
 % If you want to display your University logo,
-% uncomment the line bellow and update the path
-\addlogo{logos/Abertay.png}
+% uncomment the line bellow and update the path or the parameter
+%\addlogo{file.png}
+%\addlogo[Aberdeen]{}
+\addlogo[Abertay]{}
+%\addlogo[Dundee]{}
+%\addlogo[Edinburgh]{}
+%\addlogo[StAndrews]{}
 
 
 % Start of the document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -152,20 +157,10 @@ In this final part you now draw the dissertation to a close with a summary of th
 
 
 
-%\section{Risk Analysis} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
-%\pagebreak
-%
-%
 %\section{Summary} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
 %\pagebreak
-
-
-
-
 
 
 
@@ -178,23 +173,25 @@ In this final part you now draw the dissertation to a close with a summary of th
 
 % References and Bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\defbibnote{ref-note}{List of References consists of entries cited in the document. Any prenote text comes in here.\vspace{1cm}}
 
 %\cleardoublepage
 \phantomsection % Uncomment if you're using hyperref
 %\addtocounter{section}{1}
 %\addcontentsline{toc}{section}{\protect\numberline{\thesection} List of References}
 \addcontentsline{toc}{section}{List of References}
-\printbibliography[title={List of References},category=cited]
+\printbibliography[title={List of References},category=cited, prenote=ref-note]
 \pagebreak
 
 
+\defbibnote{bib-note}{Bibliography consists of entries not cited in the document and is sometimes called as additional reading. Any prenote text comes in here.\vspace{1cm}}
 
 % Print not cited bibliography if required as futher reading &&&&&&&&&&&&&&&&&&&
 \phantomsection % Uncomment if you're using hyperref
 %\addtocounter{section}{1}
 %\addcontentsline{toc}{section}{\protect\numberline{\thesection} Bibliography}
 \addcontentsline{toc}{section}{Bibliography}
-\printbibliography[title={Bibliography},notcategory=cited]
+\printbibliography[title={Bibliography},notcategory=cited, prenote=bib-note]
 \pagebreak
 
 

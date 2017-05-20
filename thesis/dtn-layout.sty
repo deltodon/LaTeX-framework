@@ -2,52 +2,48 @@
 \ProvidesPackage{dtn-layout}[2017/05/19 Dissertation Layout]
 
 %\RequirePackage{currfile}
-%\usepackage{todonotes}
-
+%\RequirePackage{todonotes}
+\RequirePackage{ifthen}
 
 % requires \commonDir to be declared in main file %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\thispath#1{\gdef\@thispath{\commonDir#1}}
 \def\@thispath{\@latex@warning@no@line{No \thispath given}}
 
-
 % proeject preambles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[margin=1in]{geometry}
-\usepackage{helvet} % use Helvetica font type
+\RequirePackage[margin=1in]{geometry}
+\RequirePackage{helvet} % use Helvetica font type
 
 % switch to using sans-serif for everything except mathematics
 \renewcommand{\familydefault}{\sfdefault}
 
-\usepackage[style=authoryear-ibid,backend=biber]{biblatex}
+\RequirePackage[style=authoryear-ibid,backend=biber]{biblatex}
 
 \DeclareBibliographyCategory{cited}
 \AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
 
-\usepackage[UKenglish]{babel}
-\usepackage[useregional]{datetime2}
+\RequirePackage[UKenglish]{babel}
+\RequirePackage[useregional]{datetime2}
 \DTMlangsetup[en-GB]{ord=raise,monthyearsep={,\space}}
 
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{csquotes}		% Recommended
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{amsmath}
+\RequirePackage{csquotes}		% Recommended
 
 
 \thispath{dtn-indexstyle}
-\usepackage{imakeidx}
-%\makeindex[intoc, options=-s ../thesis/dtn-indexstyle]
+\RequirePackage{imakeidx}
 \makeindex[intoc, options=-s \@thispath]
 
 
 
 %\usepackage[hidelinks]{hyperref}
-\usepackage{hyperref}
-\usepackage{lstlinebgrd}
-
-\usepackage{graphicx}		% for \includegraphics
-
-\usepackage{setspace}		% for line spacing with \spacing
-\usepackage[document]{ragged2e}	% for left alignment of text
-\usepackage[none]{hyphenat}	% prevents hyphenation
-\spacing{1.213} % equals to 1.5 line spacing in Word
+\RequirePackage{hyperref}
+\RequirePackage{lstlinebgrd}
+\RequirePackage{graphicx}			% for \includegraphics
+\RequirePackage{setspace}				% for line spacing with \spacing
+\RequirePackage[document]{ragged2e}		% for left alignment of text
+\RequirePackage[none]{hyphenat}			% prevents hyphenation
+\spacing{1.213}						% equals to 1.5 line spacing in Word
 
 \hypersetup{
 	pdfborder = {0 0 0},
@@ -95,9 +91,17 @@
 \def\institute#1{\gdef\@institute{#1}}
 \def\@institute{\@latex@warning@no@line{No \noexpand\institute given}}
 
-\def\addlogo#1{\gdef\@addlogo{#1}}
-\def\@addlogo{\@latex@warning@no@line{No \noexpand\addlogo given}}
+
+\newcommand\addlogo[2][none]{
+	\ifthenelse{\equal{#1}{Aberdeen}}{\gdef\@addlogo{logos/Aberdeen.png}}{}
+	\ifthenelse{\equal{#1}{Abertay}}{\gdef\@addlogo{logos/Abertay.png}}{}
+	\ifthenelse{\equal{#1}{Dundee}}{\gdef\@addlogo{logos/Dundee.png}}{}
+	\ifthenelse{\equal{#1}{Edinburgh}}{\gdef\@addlogo{logos/Edinburgh.png}}{}
+	\ifthenelse{\equal{#1}{StAndrews}}{\gdef\@addlogo{logos/StAndrews.png}}{}
+	\ifthenelse{\equal{#1}{none}}{\gdef\@addlogo{#2}}{}	
+}
 \addlogo{} % initialize as empty
+
 
 \newcommand\addtitlepage{%
 \begin{titlepage}

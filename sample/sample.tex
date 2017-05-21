@@ -6,24 +6,18 @@
 % 
 % License: GNU GPLv3.0 for details see LICENSE file in root of this repository
 %
+% This software is provided 'as is', without warranty of any kind, either
+% expressed or implied, including, but not limited to, the implied warranties
+% of merchantability and fitness for a particular purpose.
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[a4paper, 12pt]{article}
 
 
-% Macro declaration - do not touch %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\makeatletter
-	\newcommand*{\addsourcedir}[1] {
-		\providecommand\commonDir{}
-		\renewcommand\commonDir{#1}		
-		\providecommand*{\input@path}{}
-		\g@addto@macro\input@path{\commonDir}	% append
-	}
-\makeatother
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 % Add source path and layout preamble %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{import}
+\subimport{../thesis/}{dtn-thesis}
 \addsourcedir{../thesis/}	% change to diretory path with dtn-layout.sty
 \usepackage{dtn-layout}		% leave as it is
 
@@ -51,6 +45,12 @@
 
 % Optional arguments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% If you want to display optional subtitle,
+% uncomment the line bellow and update the text
+\subtitle{Optional Subtitle of Your Project}
+
+
+
 % If you want to display your student ID,
 % uncomment the line bellow and update the number
 \studentid{1234567}
@@ -67,6 +67,12 @@
 %\addlogo[Dundee]{}
 %\addlogo[Edinburgh]{}
 %\addlogo[StAndrews]{}
+
+
+% Add and process metadata %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subject{subject of your research}
+%\metakeywords{key1, key2, key3}
+\processmeta
 
 
 % Start of the document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

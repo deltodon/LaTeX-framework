@@ -7,6 +7,10 @@
 % 
 % License: GNU GPLv3.0 for details see LICENSE file in root of this repository
 %
+% This software is provided 'as is', without warranty of any kind, either
+% expressed or implied, including, but not limited to, the implied warranties
+% of merchantability and fitness for a particular purpose.
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -57,28 +61,6 @@
 \RequirePackage[none]{hyphenat}			% prevents hyphenation
 \spacing{1.213}							% equals to 1.5 line spacing in Word
 
-\hypersetup{
-	pdfborder = {0 0 0},
-%	bookmarks=true,         % show bookmarks bar?
-%	unicode=false,          % non-Latin characters in Acrobat’s bookmarks
-%	pdftoolbar=true,        % show Acrobat’s toolbar?
-%	pdfmenubar=true,        % show Acrobat’s menu?
-%	pdffitwindow=false,     % window fit to page when opened
-%	pdfstartview={FitH},    % fits the width of the page to the window
-%	pdftitle={My title},    % title
-%	pdfauthor={Author},     % author
-%	pdfsubject={Subject},   % subject of the document
-%	pdfcreator={Creator},   % creator of the document
-%	pdfproducer={Producer}, % producer of the document
-%	pdfkeywords={keyword1, key2, key3}, % list of keywords
-%	pdfnewwindow=true,      % links in new PDF window
-	colorlinks=true,       % false: boxed links; true: colored links
-	linkcolor=black,          % color of internal links (change box color with linkbordercolor)
-	citecolor=black,        % color of links to bibliography
-	filecolor=magenta,      % color of file links
-	urlcolor=cyan           % color of external links
-}
-
 % Code listing settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{xcolor}						% Required for specifying colors by name
 \definecolor{codered}{RGB}{135,0,0}			% for strings
@@ -87,7 +69,7 @@
 \definecolor{codegray}{RGB}{200,200,200}	% backgroundcolor
 
 \RequirePackage{listings}
-\usepackage{tikz}							% Required for drawing custom shapes
+%\usepackage{tikz}							% Required for drawing custom shapes
 
 
 \lstset{ %
@@ -131,6 +113,7 @@
 
 \def\subtitle#1{\gdef\@subtitle{#1}}
 \def\@subtitle{\@latex@warning@no@line{No \noexpand\subtitle given}}
+\subtitle{} % initialize as empty
 
 \def\studentid#1{\gdef\@studentid{#1}}
 \def\@studentid{\@latex@warning@no@line{No \noexpand\studentid given}}
@@ -162,6 +145,40 @@
 \addlogo{} % initialize as empty
 
 
+\def\subject#1{\gdef\@subject{#1}}
+\def\@subject{\@latex@warning@no@line{No \noexpand\subject given}}
+\subject{} % initialize as empty
+
+\def\metakeywords#1{\gdef\@metakeywords{#1}}
+\def\@metakeywords{\@latex@warning@no@line{No \noexpand\metakeywords given}}
+\metakeywords{} % initialize as empty
+
+
+\def\processmeta{
+	\hypersetup{
+		pdfborder = {0 0 0},
+		%	bookmarks=true,         % show bookmarks bar?
+		%	unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+		%	pdftoolbar=true,        % show Acrobat’s toolbar?
+		%	pdfmenubar=true,        % show Acrobat’s menu?
+		%	pdffitwindow=false,     % window fit to page when opened
+		%	pdfstartview={FitH},    % fits the width of the page to the window
+		pdftitle={\@title},    		% title
+		pdfauthor={\@author},   	% author
+		pdfsubject={\@subject},   	% subject of the document
+		%	pdfcreator={Creator},   % creator of the document
+		pdfproducer={Producer},		% producer of the document
+		pdfkeywords={\@metakeywords}, % list of keywords
+		%	pdfnewwindow=true,      % links in new PDF window
+		colorlinks=true,       % false: boxed links; true: colored links
+		linkcolor=black,          % color of internal links (change box color with linkbordercolor)
+		citecolor=black,        % color of links to bibliography
+		filecolor=magenta,      % color of file links
+		urlcolor=cyan           % color of external links
+	}
+}
+
+
 \newcommand\addtitlepage{%
 \begin{titlepage}
 	
@@ -172,28 +189,33 @@
 	\vspace*{0.1\textheight}
 	% TITLE SECTION--------------------------------------------------------------------------
 	\HRule \\[0.7cm]
-	{ \LARGE \bfseries \@title}\\ [0.3cm] % Title of your document
+	{ \LARGE \bfseries \@title}\\		% Title of your document
+	\ifx\@subtitle\@empty
+		\relax
+	\else
+		\large \@subtitle
+	\fi%
+	\vspace{0.2cm}
 	\HRule \\[1.0cm]
 	
 	
 	% AUTHOR SECTION-------------------------------------------------------------------------
 	\large \@author
 	\ifx\@studentid\@empty
-	\relax
+		\relax
 	\else
-	\hspace*{0.5cm} ID: \@studentid
+		\hspace*{0.5cm} ID: \@studentid
 	\fi% 
 	\vspace{0.3cm}
 	
 	\normalsize \@qualification, \the\year
-%	\vspace{5cm}
 	\vspace*{\fill}
 	
 	% LOGO SECTION  ------------------------------------------------------------
 	\ifx\@addlogo\@empty
-	\relax
+		\relax
 	\else
-	\includegraphics[width=3cm]{\@addlogo}
+		\includegraphics[width=3cm]{\@addlogo}
 	\fi%
 	
 	
@@ -202,9 +224,9 @@
 	
 
 	\ifx\@supervisor\@empty
-	\relax
+		\relax
 	\else
-	\large Supervisor: \@supervisor\\[1.0cm]%
+		\large Supervisor: \@supervisor\\[1.0cm]%
 	\fi%	
 	\textsc{\normalsize \@school}\\[0.2cm]
 	\textsc{\normalsize \@institute}

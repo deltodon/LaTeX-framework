@@ -1,5 +1,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Dissertation
+% Sample project representing Deltodon Dissertation Layout features
+% Version 0.3.0 (21/5/2017)
+%
+% Author: Jiri Klic <deltodon.com>
+% 
+% License: GNU GPLv3.0 for details see LICENSE file in root of this repository
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[a4paper, 12pt]{article}
@@ -17,12 +23,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-
-
 % Add source path and layout preamble %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \addsourcedir{../thesis/}	% change to diretory path with dtn-layout.sty
 \usepackage{dtn-layout}		% leave as it is
+
 
 % Insert your .bib file in here %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \addbibresource{sample.bib}	% Syntax for version >= 1.2
@@ -30,7 +34,6 @@
 
 
 % Mandatory arguments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %\title{Simple dissertation example showing how to create Harvard style referencing in \LaTeX}
 \title{The Name of Your Project}
 
@@ -44,6 +47,7 @@
 
 % i.e. - University of Abertay Dundee
 \institute{Name of Your University}
+
 
 % Optional arguments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -66,6 +70,8 @@
 
 
 % Start of the document %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{lipsum}				% Inserts dummy text
+
 
 \begin{document}
 	
@@ -95,7 +101,7 @@ The abstract\index{Abstract} is a kind of executive summary. Abstracts are often
 The introduction\index{Introduction} should set the scene for the dissertation and allow the reader to align themselves to the topic. It should start very general and then focus towards the specific topic of the project. This is probably the only part of the dissertation where you can be slightly informal and you might quote some interesting text to get the attention of the reader. The introduction should make the reader want to continue reading. You will doubtless repeat some of this material in more detail later on, so don’t put too many references in the introduction in order to keep it fairly light. A couple of photos, screen shots or diagrams won’t go amiss at this point to get the reader’s interest and help explain the topic. A typical introduction will be no more than 5 pages and you should finish this section with a clear statement of your project focus as a research question or problem
 
 
-\subsection{Sub1}
+\subsection{Citation}
 
 
 The following examples show how to produce Harvard style referencing using biblatex.
@@ -103,12 +109,22 @@ The following examples show how to produce Harvard style referencing using bibla
 \begin{enumerate}
 	\item A citation\index{Citation} command in parentheses: \parencite{Smith:2012qr}.
 %	\item A citation command for use in the flow of text: As \textcite{Smith:2013jd} said \dots
-	\item A citation command which automatically switches style depending on location and the option setting in the package declaration (see line 12 in the LaTeX source code). In this case, it produces a citation in parentheses: \autocite{Other:2014ab}.
+	\item A citation command which automatically switches style depending on location and the option setting in the package declaration (see the LaTeX source code). In this case, it produces a citation in parentheses: \autocite{Other:2014ab}.
 \end{enumerate}
 
+\pagebreak
 
-\subsection{Sub1}
+\subsection{Code Listing}
 
+\lstinputlisting[language=C++, caption=Code example]{helloworld.cpp}
+\vspace{1cm}
+
+\lstinputlisting[language=C++,
+				 firstline=4,
+				 lastline=8,
+				 firstnumber=151,
+				 caption=Another code example]{helloworld.cpp}
+\vspace{1cm}
 
 \subsection{Sub2}
 

@@ -1,2 +1,2 @@
-# LaTeX-framework 0.1.0
+# LaTeX-framework 0.3.0
 Style and Bibliography framework for dissertation and other technical writing in LaTeX

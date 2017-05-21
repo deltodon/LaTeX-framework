@@ -1,3 +1,15 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Deltodon Dissertation Layout
+% Structural Definitions File
+% Version 0.3.0 (21/5/2017)
+%
+% Author: Jiri Klic <deltodon.com>
+% 
+% License: GNU GPLv3.0 for details see LICENSE file in root of this repository
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{dtn-layout}[2017/05/19 Dissertation Layout]
 
@@ -17,33 +29,33 @@
 \renewcommand{\familydefault}{\sfdefault}
 
 \RequirePackage[style=authoryear-ibid,backend=biber]{biblatex}
-
 \DeclareBibliographyCategory{cited}
 \AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
 
-\RequirePackage[UKenglish]{babel}
+
+\RequirePackage[UKenglish]{babel}		% English language/hyphenation
 \RequirePackage[useregional]{datetime2}
 \DTMlangsetup[en-GB]{ord=raise,monthyearsep={,\space}}
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{amsmath}
-\RequirePackage{csquotes}		% Recommended
+\RequirePackage{csquotes}				% Recommended
 
 
 \thispath{dtn-indexstyle}
-\RequirePackage{imakeidx}
+\RequirePackage{imakeidx}				% for creating index
 \makeindex[intoc, options=-s \@thispath]
 
 
 
 %\usepackage[hidelinks]{hyperref}
 \RequirePackage{hyperref}
-\RequirePackage{lstlinebgrd}
-\RequirePackage{graphicx}			% for \includegraphics
+%\RequirePackage{lstlinebgrd}
+\RequirePackage{graphicx}				% Required for including pictures
 \RequirePackage{setspace}				% for line spacing with \spacing
 \RequirePackage[document]{ragged2e}		% for left alignment of text
 \RequirePackage[none]{hyphenat}			% prevents hyphenation
-\spacing{1.213}						% equals to 1.5 line spacing in Word
+\spacing{1.213}							% equals to 1.5 line spacing in Word
 
 \hypersetup{
 	pdfborder = {0 0 0},
@@ -65,6 +77,53 @@
 	citecolor=black,        % color of links to bibliography
 	filecolor=magenta,      % color of file links
 	urlcolor=cyan           % color of external links
+}
+
+% Code listing settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{xcolor}						% Required for specifying colors by name
+\definecolor{codered}{RGB}{135,0,0}			% for strings
+\definecolor{codegreen}{RGB}{0,128,0}		% comments
+\definecolor{codeblue}{RGB}{0,0,255}		% keywords
+\definecolor{codegray}{RGB}{200,200,200}	% backgroundcolor
+
+\RequirePackage{listings}
+\usepackage{tikz}							% Required for drawing custom shapes
+
+
+\lstset{ %
+%	backgroundcolor=\color{codegray},   % choose the background color
+	basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+%	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                 % sets automatic line breaking
+	captionpos=b,                    % sets the caption-position to bottom
+	commentstyle=\color{codegreen},  % comment style
+%	deletekeywords={...},            % if you want to delete keywords from the given language
+%	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+%	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+%	fillcolor=\color{darkgray},
+%	frame=single,	                 % adds a frame around the code
+	frame=l,	                 	 % adds a frame line left of the code
+%	framesep=1pt,
+	framerule=3pt,					 % sets frame line thickness
+%	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{codeblue},   % keyword style
+%	language=Octave,                 % the language of the code
+%	linewidth=1.4\textwidth,
+%	linebackgroundcolor={darkgray},
+%	morecomment=[l][\color{magenta}]{\#}
+%	morekeywords={*,...},            % if you want to add more keywords to the set
+	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+%	numbersep=12pt,                   % how far the line-numbers are from the code
+	numberstyle=\footnotesize, 		 % the style that is used for the line-numbers
+	rulecolor=\color{green},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+%	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,          % underline spaces within strings only
+%	showtabs=false,                  % show tabs within strings adding particular underscores
+%	stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{codered},     % string literal style
+	tabsize=2,	                     % sets default tabsize to 2 spaces
+%	title=\lstname,                  % show the filename of files included with \lstinputlisting; also try caption instead of title
+	xleftmargin=7ex
 }
 
 
@@ -164,18 +223,29 @@
 	\pagebreak
 	
 	\phantomsection % Uncomment if you're using hyperref
-	%\addtocounter{section}{1}
-	%\addcontentsline{toc}{section}{\protect\numberline{\thesection} \listfigurename}
+%	\addtocounter{section}{1}
+%	\addcontentsline{toc}{section}{\protect\numberline{\thesection} \listfigurename}
 	\addcontentsline{toc}{section}{\listfigurename}
 	\listoffigures
 	\pagebreak
 	
 	\phantomsection % Uncomment if you're using hyperref
-	%\addtocounter{section}{1}
-	%\addcontentsline{toc}{section}{\protect\numberline{\thesection} \listtablename}
+%	\addtocounter{section}{1}
+%	\addcontentsline{toc}{section}{\protect\numberline{\thesection} \listtablename}
 	\addcontentsline{toc}{section}{\listtablename}
 	\listoftables
 	\pagebreak
+	
+	\phantomsection % Uncomment if you're using hyperref
+%	\addtocounter{section}{1}
+	\renewcommand\lstlistlistingname{Code Listings}
+%	\addcontentsline{toc}{section}{\protect\numberline{\thesection} \lstlistlistingname}
+	\addcontentsline{toc}{section}{\lstlistlistingname}
+	\lstlistoflistings
+	\pagebreak	
+	
+	
+	
 	
 	\pagenumbering{arabic}
 }

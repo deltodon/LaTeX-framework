@@ -32,7 +32,8 @@
 % switch to using sans-serif for everything except mathematics
 \renewcommand{\familydefault}{\sfdefault}
 
-\RequirePackage[style=authoryear-ibid,backend=biber]{biblatex}
+%\RequirePackage[style=authoryear-ibid,backend=biber]{biblatex}
+\RequirePackage[style=authoryear,dashed=false,backend=biber]{biblatex}
 \DeclareBibliographyCategory{cited}
 \AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
 
@@ -45,6 +46,7 @@
 \RequirePackage{amsmath}
 \RequirePackage{csquotes}				% Recommended
 
+\RequirePackage[titletoc, title]{appendix}
 
 \thispath{dtn-indexstyle}
 \RequirePackage{imakeidx}				% for creating index
@@ -56,6 +58,7 @@
 \RequirePackage{hyperref}
 %\RequirePackage{lstlinebgrd}
 \RequirePackage{graphicx}				% Required for including pictures
+\usepackage{float}						% [H] option for your figure to force figure placement in text
 \RequirePackage{setspace}				% for line spacing with \spacing
 \RequirePackage[document]{ragged2e}		% for left alignment of text
 \RequirePackage[none]{hyphenat}			% prevents hyphenation
@@ -153,6 +156,9 @@
 \def\@metakeywords{\@latex@warning@no@line{No \noexpand\metakeywords given}}
 \metakeywords{} % initialize as empty
 
+\def\myheader#1{\textbf{#1}\vspace{0.2cm}}
+
+
 
 \def\processmeta{
 	\hypersetup{
@@ -173,8 +179,10 @@
 		colorlinks=true,       % false: boxed links; true: colored links
 		linkcolor=black,          % color of internal links (change box color with linkbordercolor)
 		citecolor=black,        % color of links to bibliography
-		filecolor=magenta,      % color of file links
-		urlcolor=cyan           % color of external links
+		%filecolor=magenta,      % color of file links
+		filecolor=black,      % color of file links
+		%urlcolor=cyan           % color of external links
+		urlcolor=black           % color of external links
 	}
 }
 
@@ -331,9 +339,27 @@
 
 
 
+%\newlength{\bibitemsep}\setlength{\bibitemsep}{.2\baselineskip plus .05\baselineskip minus .05\baselineskip}
+%\newlength{\bibparskip}\setlength{\bibparskip}{0pt}
+%\let\oldthebibliography\thebibliography
+%\renewcommand\thebibliography[1]{%
+%	\oldthebibliography{#1}%
+%	\setlength{\parskip}{\bibitemsep}%
+%	\setlength{\itemsep}{\bibparskip}%
+%}
 
 
+\setlength{\bibitemsep}{%
+	\ifcase \@ptsize \relax % 10pt
+	0.6\baselineskip%
+	\or % 11pt
+	0.618\baselineskip%
+	\or % 12pt
+	0.604\baselineskip%
+	\fi%
+}
 
+\setlength{\bibhang}{0pt}	% removes bibliography paragraph indentation
 
 
 
@@ -367,7 +393,7 @@
 %\usepackage{hyperref}
 %\usepackage{listings}
 %\usepackage{lstlinebgrd}
-%\usepackage{float}
+%
 %
 %\usepackage{tikz}
 %\usetikzlibrary{shadows, shadows.blur}

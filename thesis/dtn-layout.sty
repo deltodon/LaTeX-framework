@@ -32,15 +32,20 @@
 % switch to using sans-serif for everything except mathematics
 \renewcommand{\familydefault}{\sfdefault}
 
-%\RequirePackage[style=authoryear-ibid,backend=biber]{biblatex}
-\RequirePackage[style=authoryear,dashed=false,backend=biber]{biblatex}
+
+\RequirePackage[british]{babel}		% English language/hyphenation, load before biblatex
+
+%\RequirePackage[style=authoryear-ibid,dashed=false,backend=biber]{biblatex}
+%\RequirePackage[style=ctr-harward,giveninits, dashed=false,backend=biber]{biblatex}
+%\RequirePackage[style=ctr-harward, giveninits, backend=biber]{biblatex}
+\RequirePackage[style=ctr-harward, backend=biber]{biblatex}
 \DeclareBibliographyCategory{cited}
 \AtEveryCitekey{\addtocategory{cited}{\thefield{entrykey}}}
 
 
-\RequirePackage[UKenglish]{babel}		% English language/hyphenation
-\RequirePackage[useregional]{datetime2}
-\DTMlangsetup[en-GB]{ord=raise,monthyearsep={,\space}}
+
+%\RequirePackage[useregional]{datetime2}
+%\DTMlangsetup[en-GB]{ord=raise,monthyearsep={,\space}}
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{amsmath}
@@ -284,57 +289,16 @@
 % Bibliography Management %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\DeclareCiteCommand{\cite}
-{\usebibmacro{prenote}}
-{\usebibmacro{citeindex}%
-	\printtext[bibhyperref]{\usebibmacro{cite}}}
-{\multicitedelim}
-{\usebibmacro{postnote}}
 
-\DeclareCiteCommand*{\cite}
-{\usebibmacro{prenote}}
-{\usebibmacro{citeindex}%
-	\printtext[bibhyperref]{\usebibmacro{citeyear}}}
-{\multicitedelim}
-{\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\parencite}[\mkbibparens]
-{\usebibmacro{prenote}}
-{\usebibmacro{citeindex}%
-	\printtext[bibhyperref]{\usebibmacro{cite}}}
-{\multicitedelim}
-{\usebibmacro{postnote}}
-
-\DeclareCiteCommand*{\parencite}[\mkbibparens]
-{\usebibmacro{prenote}}
-{\usebibmacro{citeindex}%
-	\printtext[bibhyperref]{\usebibmacro{citeyear}}}
-{\multicitedelim}
-{\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\footcite}[\mkbibfootnote]
-{\usebibmacro{prenote}}
-{\usebibmacro{citeindex}%
-	\printtext[bibhyperref]{ \usebibmacro{cite}}}
-{\multicitedelim}
-{\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\footcitetext}[\mkbibfootnotetext]
-{\usebibmacro{prenote}}
-{\usebibmacro{citeindex}%
-	\printtext[bibhyperref]{\usebibmacro{cite}}}
-{\multicitedelim}
-{\usebibmacro{postnote}}
-
-\DeclareCiteCommand{\textcite}
-{\boolfalse{cbx:parens}}
-{\usebibmacro{citeindex}%
-	\printtext[bibhyperref]{\usebibmacro{textcite}}}
-{\ifbool{cbx:parens}
-	{\bibcloseparen\global\boolfalse{cbx:parens}}
-	{}%
-	\multicitedelim}
-{\usebibmacro{textcite:postnote}}
+%\DeclareCiteCommand{\textcite}
+%{\boolfalse{cbx:parens}}
+%{\usebibmacro{citeindex}%
+%	\printtext[bibhyperref]{\usebibmacro{textcite}}}
+%{\ifbool{cbx:parens}
+%	{\bibcloseparen\global\boolfalse{cbx:parens}}
+%	{}%
+%	\multicitedelim}
+%{\usebibmacro{textcite:postnote}}
 
 
 
@@ -349,17 +313,17 @@
 %}
 
 
-\setlength{\bibitemsep}{%
-	\ifcase \@ptsize \relax % 10pt
-	0.6\baselineskip%
-	\or % 11pt
-	0.618\baselineskip%
-	\or % 12pt
-	0.604\baselineskip%
-	\fi%
-}
+%\setlength{\bibitemsep}{%
+%	\ifcase \@ptsize \relax % 10pt
+%	0.6\baselineskip%
+%	\or % 11pt
+%	0.618\baselineskip%
+%	\or % 12pt
+%	0.604\baselineskip%
+%	\fi%
+%}
 
-\setlength{\bibhang}{0pt}	% removes bibliography paragraph indentation
+%\setlength{\bibhang}{0pt}	% removes bibliography paragraph indentation
 
 
 
